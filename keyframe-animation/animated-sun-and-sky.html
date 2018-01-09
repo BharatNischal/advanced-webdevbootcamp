@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animated Sun and Sky</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        .container {
+            margin: 0 auto;
+            width: 600px;
+            height: 600px;
+            animation-name: cycleskycolors;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-delay: 0;
+        }
+        .grass {
+            background: green;
+            height: 500px;
+            width: 600px;
+            position: absolute;
+        }
+        .sun {
+            background: #f1c40f;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            animation-name: suniteration;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        @keyframes cycleskycolors {
+            0%{
+                background-color: black;
+            }
+            10%{
+                background-color: pink;
+            }
+            30%{
+                background-color: blue;
+            }
+            70%{
+                background-color: blue;
+            }
+            90%{
+                background-color: pink;
+            }
+            100%{
+                background-color: black;
+            }
+        }
+        @keyframes suniteration {
+            0%{
+               transform: translate(0px, 120px);
+               background-color: orange;
+            }
+            25%{
+               transform: translate(120px, 0px);
+               background-color: yellow;
+            }
+            50%{
+               transform: translate(240px, -60px);
+               background-color: yellow;
+            }
+            75%{
+               transform: translate(360px, 0px);
+               background-color: orange;
+            }
+            100%{
+               transform: translate(480px, 120px);
+               background-color: red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sun"></div>
+        <div class="grass"></div>
+    </div>
+</body>
+</html>
