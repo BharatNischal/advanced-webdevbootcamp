@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rainbow Animated Text</title>
+    <style>
+        /* here we apply the animation to the element we want to target */
+        p {
+            animation-name: rainbowtext;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+        }
+        /* here we define the animation with keyframes */
+        @keyframes rainbowtext{
+            0%{
+                color: red;
+                font-size: 20px;
+            }
+            25%{
+                color: orange;
+                font-size: 30px;
+                transform: translateX(200px) translateY(200px);
+            }
+            50%{
+                color: yellow;
+                font-size: 40px;
+                transform: translateX(400px) translateY(400px);
+            }
+            75%{
+                color: green;
+                font-size: 30px;
+                transform: translateX(200px) translateY(200px);
+            }
+            100%{
+                color: blue;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>Hello!</p>
+</body>
+</html>
