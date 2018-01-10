@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flexbox Starter Demo</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        .container {
+            height: 100vh;
+            border: 10px solid white;
+            display: flex;
+            flex-wrap: wrap;
+            /* distribute space on the main axes */
+            /* align-items: stretch; default value */ 
+            /* align-items: flex-start; 
+            align-items: flex-end;
+            align-items: center;
+            align-items: baseline;  */
+            /* distribute space between rows on the cross axes */
+            align-content: flex-start;
+            /* align-content: flex-end; */
+            /* align-content: center; */
+            /* align-content: space-between; */
+            /* align-content: space-around; */
+        }
+        .box { 
+            font-size: 100px;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 300;
+            box-sizing: border-box;
+            width: 300px;
+        }
+        .box-1{background-color: rgb(255, 0, 0);}
+        .box-2{background-color: rgb(255, 174, 0);}
+        .box-3{background-color: rgb(255, 247, 0);}
+        .box-4{background-color: rgb(85, 255, 0);}
+        .box-5{background-color: rgb(0, 255, 229);}
+        .box-6{background-color: rgb(0, 123, 255);}
+        .box-7{background-color: rgb(25, 0, 255);}
+        .box-8{background-color: rgb(212, 0, 255);}
+        .box-9{background-color: rgb(255, 0, 119);}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box-1">1</div>
+        <div class="box box-2">2</div>
+        <div class="box box-3">3</div>
+        <div class="box box-4">4</div>
+        <div class="box box-5">5</div>
+        <div class="box box-6">6</div>
+        <div class="box box-7">7</div>
+        <div class="box box-8">8</div>
+        <div class="box box-9">9</div>
+    </div>
+</body>
+</html>
