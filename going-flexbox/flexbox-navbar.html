@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flexbox Navbar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+        nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            border: 1px solid blue;
+        }
+        @media screen and (max-width: 920px) {
+            nav {
+                justify-content: space-around;
+            }
+        }
+        @media screen and (max-width: 560px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href=""><i class="fa fa-home"></i>Home</a>
+        <a href=""><i class="fa fa-question"></i>About</a>
+        <a href=""><i class="fa fa-phone"></i>Contanct</a>
+        <a href=""><i class="fa fa-paw"></i>Dogs</a>
+    </nav>
+</body>
+</html>
