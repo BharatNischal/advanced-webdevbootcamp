@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Holy Grail Layout with Flexbox</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: black;
+            font-family: Helvetica;
+        }
+        header {
+            background-color: lightgreen;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-basis: 60px;
+            padding: 10px;
+        }
+        header a {
+            text-decoration: none;
+            color: black;
+        }
+        main > *, header, footer {
+            margin: 4px;
+            padding: 5px;
+            border-radius: 7px;
+        }
+        main {
+            flex-basis: 800px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        article {
+            background-color: rgb(234, 237, 237);
+            flex-basis: 55%;
+            flex-grow: 4;
+        }
+        aside {
+            background-color: rgb(49, 55, 226);
+            flex-basis: 18%;
+            flex-grow: 1;
+        }
+        nav {
+            background-color: rgb(122, 123, 146);
+            order: -1;
+            flex-basis: 18%;
+            flex-grow: 1;
+        }
+        footer {
+            background-color: lightgreen;
+            flex-basis: 60px;
+            padding: 10px;
+        }
+        @media all and (max-width: 640px) {
+            main {
+                flex-direction: column;
+            }
+            article {
+                order: -1;
+                flex-grow: 4;
+            }
+            nav {
+                flex-grow: 1;
+            }
+            aside {
+                flex-grow: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="">Nav Left</a>
+        <a href="">Nav Right</a>
+    </header>
+    <main>
+        <article>MAIN CONTENT</article>
+        <nav>SIDE NAV</nav>
+        <aside>ASIDE</aside>
+    </main>
+    <footer>FOOTER</footer>
+</body>
+</html>
