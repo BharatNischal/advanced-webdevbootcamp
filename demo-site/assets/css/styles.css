@@ -29,7 +29,7 @@ a.btn {
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
-    background-color: #3f51b5;
+    background-color: #1f38c3;
     opacity: 1;
 }
 
@@ -225,7 +225,7 @@ header nav li {
 }
 
 .packages .grid li i {
-    color: #8c9eff;
+    color: #3b55e4;
 }
 
 .packages .grid li h4 {
