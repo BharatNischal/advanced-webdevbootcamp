@@ -1,5 +1,7 @@
 # Advanced Web Developer BootCamp Log
 This repository contains everything I am learning from the Advanced Web Developer BootCamp by Colt Steele on Udemy
+### Sun, Jan 14 2018
+Rest day (just worked on the layout of a side project);
 ### Sat, Jan 13 2018
 Async Foundations: callback, forEach, findIndex and countDown function;
 ### Fri, Jan 12 2018
