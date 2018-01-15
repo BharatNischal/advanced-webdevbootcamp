@@ -1,5 +1,7 @@
 # Advanced Web Developer BootCamp Log
 This repository contains everything I am learning from the Advanced Web Developer BootCamp by Colt Steele on Udemy
+### Mon, Jan 15 2018
+Promises
 ### Sun, Jan 14 2018
 Rest day (just worked on the layout of a side project);
 ### Sat, Jan 13 2018
