@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Picture with AJAX</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .btn {
+            margin: 20px;
+            color: white;
+            background-color: #D4312D;
+            padding: 15px 40px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid #D4312D;
+            font-weight: bolder;
+            font-family: 'Montserrat';
+            transition-property: all;
+            transition-delay: 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        img {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #f4f0f0;
+            border-radius: 4px;
+            padding: 2px;
+        }
+        img:hover {
+            filter: saturate(4);
+        }
+        @media (max-width: 850px) {
+            img {
+                width: 600px;
+                height: 380px;
+            }
+        }
+        @media (max-width: 620px) {
+            img {
+                width: 420px;
+                height: 300px;
+            }
+            .btn {
+                padding: 10px 30px;
+            }
+        }
+        @media (max-width: 420px) {
+            img {
+                width: 320px;
+                height: 240px;
+            }
+            .btn {
+                padding: 8px 24px;
+            }
+            .container h1 {
+                font-size: 32px
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RandomPic</h1>
+        <img id="photo" src="https://images.unsplash.com/photo-1508062806651-749950840be2?auto=format&fit=crop&w=800&h=600&q=80" alt="Old Man Of Storr">
+        <a id="btn" class="btn" href="#">Get A Random Picture</a>
+    </div>
+    <script>
+        const app_ID = "94be1165109ee086e949c13b89a885cf76f7f1caf95699c3b4e96ac2237700b8";
+        const endpoint = "https://api.unsplash.com/photos/random/?w=800&h=600&client_id=" + app_ID;
+        const btn = document.querySelector('#btn');
+        const img = document.querySelector('#photo');
+
+        btn.addEventListener('click', () => {
+            const XHR = new XMLHttpRequest();
+            XHR.onreadystatechange = () => {
+                if (XHR.readyState == 4 && XHR.status == 200) {
+                    const data = JSON.parse(XHR.responseText);
+                    console.log(data.urls);
+                    const url = data.urls.regular;
+                    img.src = url;
+                }
+            }
+            XHR.open('GET', endpoint);
+            XHR.send();
+        });
+    </script>
+</body>
+</html>
