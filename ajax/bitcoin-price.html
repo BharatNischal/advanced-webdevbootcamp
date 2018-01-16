@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BitCoin Price</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 150px;
+        }
+        .container h1 {
+            font-size: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .container h1 {
+               font-size: 28px;
+            }
+        }
+        .btn {
+            margin: 20px;
+            color: white;
+            background-color: rgb(29, 187, 50);
+            padding: 15px 40px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid rgb(29, 187, 50);
+            font-weight: bolder;
+            font-family: 'Montserrat';
+            transition-property: all;
+            transition-delay: 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        #price, #lastYearPrice {
+            color: rgb(29, 187, 50);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Current Bitcoin Price: <span id="price"></span></h1>
+        <h1>One Year Ago Price: <span id="lastYearPrice"></span></h1>
+        <a id="button" class="btn" href="#">Refresh</a>
+    </div>
+    <script>
+        const button = document.querySelector('#button');
+        const price = document.querySelector('#price');
+        const lastYearPrice = document.querySelector('#lastYearPrice');
+        const endpoint = 'https://api.coindesk.com/v1/bpi/currentprice.json';
+        const dt = new Date();
+        const last_year = formatDate(dt);
+        const endpoint2 = 'https://api.coindesk.com/v1/bpi/historical/close.json?start='+ last_year + '&end=' + last_year;
+
+        window.addEventListener('load', () => {
+            const XHR = new XMLHttpRequest();
+            XHR.onreadystatechange = function() {
+                if (XHR.readyState == 4 && XHR.status == 200) {
+                    const data = JSON.parse(XHR.responseText);
+                    const rateEuro = data.bpi.EUR.rate;
+                    const symbolEuro = data.bpi.EUR.code;
+                    price.textContent = `${rateEuro} ${symbolEuro}`;
+                }
+            }
+            XHR.open('GET', endpoint);
+            XHR.send();
+        });
+
+        window.addEventListener('load', () => {
+            const XHR = new XMLHttpRequest();
+            XHR.onreadystatechange = function() {
+                if (XHR.readyState == 4 && XHR.status == 200) {
+                    const data = JSON.parse(XHR.responseText);
+                    const lastYear = data.bpi[last_year];
+                    lastYearPrice.textContent = `${lastYear} USD`;
+                }
+            }
+            XHR.open('GET', endpoint2);
+            XHR.send();
+        });
+
+        button.addEventListener('click', () => {
+            const XHR = new XMLHttpRequest();
+            XHR.onreadystatechange = function() {
+                if (XHR.readyState == 4 && XHR.status == 200) {
+                    const data = JSON.parse(XHR.responseText);
+                    const rateEuro = data.bpi.EUR.rate;
+                    const symbolEuro = data.bpi.EUR.code;
+                    price.textContent = `${rateEuro} ${symbolEuro}`;
+                }
+            }
+            XHR.open('GET', endpoint);
+            XHR.send();
+        });
+
+    function formatDate(jsDate) {
+        return jsDate.getFullYear() - 1 + "-"
+            + ((jsDate.getMonth() + 1) < 10 ? ("0" + (jsDate.getMonth() + 1)) : (jsDate.getMonth() + 1)) + "-"
+            + (jsDate.getDate() < 10 ? ("0" + jsDate.getDate()) : jsDate.getDate());
+    }
+
+    </script>
+</body>
+</html>
