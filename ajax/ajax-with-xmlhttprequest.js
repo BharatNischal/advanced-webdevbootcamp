@@ -5,7 +5,7 @@
 
 //XMLHTTP first and old way to make an AJAX request
 //the original way to make a request
-const endpoint = "https://api.github.com/zen10";
+const endpoint = "https://api.github.com/zen";
 
 const XHR = new XMLHttpRequest();
 XHR.onreadystatechange = () => {
