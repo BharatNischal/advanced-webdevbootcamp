@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX with AXIOS</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Hey! Open the Console to see DATA!</p>
+        <button id="btn">GET DATA FROM AXIOS</button>
+    </div>
+        
+
+    <script>
+        const endpoint = 'https://opentdb.com/api.php?amount=1';
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', getData);
+        
+        function getData() {
+        //this is how axios works
+        axios.get(endpoint)
+            .then(res => {
+                console.log(res.data.results[0].question);
+                console.log(res.data.results[0].correct_answer);
+            })
+            .catch(handleErrors);
+        }
+        //errors handling in axios
+        function handleErrors(err) {
+            if(err.response) {
+                console.log('Error with Response: ' + err.response.status);
+            } else if (err.request) {
+                console.log('Error with Request');
+            } else {
+                console.log('Error: ' + err.message);
+            }
+        }
+
+    </script>
+</body>
+</html>
