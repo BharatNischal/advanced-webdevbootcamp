@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Pictures Generator - JQuery Version</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            margin-top: 30vh;
+        }
+        .btn {
+            margin-top: 3vh;
+        }
+        .image {
+            /* border-radius: 50%; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="image" id="picture" src="https://picsum.photos/400/300" alt="">
+        <button id="btn" class="btn">NEW PICTURE</button>
+    </div>
+    
+    <script>
+        const app_ID = "94be1165109ee086e949c13b89a885cf76f7f1caf95699c3b4e96ac2237700b8";
+        const endpoint = "https://api.unsplash.com/photos/random/?w=400&h=300&client_id=" + app_ID;
+        $('#btn').click(() => {
+            $.getJSON(endpoint)
+            .done(data => {
+                console.log(data.urls.small);
+                const link = data.urls.small;
+                $('#picture').attr('src', link);
+            })
+            .fail(() => console.log('ERROR'));
+        });
+    </script>
+</body>
+</html>
