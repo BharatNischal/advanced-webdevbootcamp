@@ -48,6 +48,7 @@
         <h1>One Year Ago Price: <span id="lastYearPrice"></span></h1>
         <a id="button" class="btn" href="#">Refresh</a>
     </div>
+
     <script>
         const button = document.querySelector('#button');
         const price = document.querySelector('#price');
@@ -62,9 +63,9 @@
             XHR.onreadystatechange = function() {
                 if (XHR.readyState == 4 && XHR.status == 200) {
                     const data = JSON.parse(XHR.responseText);
-                    const rateEuro = data.bpi.EUR.rate;
-                    const symbolEuro = data.bpi.EUR.code;
-                    price.textContent = `${rateEuro} ${symbolEuro}`;
+                    const rate = data.bpi.USD.rate;
+                    const symbol = data.bpi.USD.code;
+                    price.textContent = `${rate} ${symbol}`;
                 }
             }
             XHR.open('GET', endpoint);
@@ -89,9 +90,9 @@
             XHR.onreadystatechange = function() {
                 if (XHR.readyState == 4 && XHR.status == 200) {
                     const data = JSON.parse(XHR.responseText);
-                    const rateEuro = data.bpi.EUR.rate;
-                    const symbolEuro = data.bpi.EUR.code;
-                    price.textContent = `${rateEuro} ${symbolEuro}`;
+                    const rate = data.bpi.USD.rate;
+                    const symbol = data.bpi.USD.code;
+                    price.textContent = `${rate} ${symbol}`;
                 }
             }
             XHR.open('GET', endpoint);
