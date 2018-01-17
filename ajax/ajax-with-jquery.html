@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax With JQuery</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <style>
+
+        body {
+            background-color: black;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30vh;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .container p {
+            font-size: 2em;
+            color: white;
+        }
+        .btn {
+            margin-top: 100px;
+            color: white;
+            background-color: rgb(45, 212, 134);
+            padding: 15px 40px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid rgb(45, 212, 134);
+            font-weight: bolder;
+            transition-property: all;
+            transition-delay: 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="lorem"></p>
+        <button id="btn" class="btn">Get Your New Lorem</button>
+    </div>
+
+    <script>
+        const endpoint = 'https://baconipsum.com/api/?type=meat-and-filler';
+        $(document).ready(ajaxCall);
+        $('#btn').click(ajaxCall);
+
+        function ajaxCall(){
+                $.ajax({
+                    method: "GET",
+                    url: endpoint,
+                    dataType: "json",
+                })
+                .done(res => $('#lorem').text(res[0]))
+                .fail(() => console.log('FAIL TO LOAD'));
+        }
+    </script>
+</body>
+</html>
