@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Users Generator</title>
+    <style>
+        /* CSS design originally by @jofpin, tweaked by Colt Steele */
+        @import url(https://fonts.googleapis.com/css?family=Raleway|Varela+Round|Coda);
+
+        body {
+        background: #ecf0f1;
+        padding: 2.23em;
+        }
+
+        .title {
+        color: #2c3e50;
+        font-family: "Coda", sans-serif;
+        text-align: center;
+        }
+        .user-profile {
+        margin: auto;
+        width: 30em;
+        height: 11em;
+        background: #fff;
+        border-radius: .3em;
+        }
+
+        .user-profile  #fullname {
+        margin: auto;
+        margin-top: -4.40em;
+        margin-left: 5.80em;
+        color: #16a085;
+        font-size: 1.53em;
+        font-family: "Coda", sans-serif;
+        font-weight: bold;
+        }
+
+        #username {
+        margin: auto;
+        display: inline-block;
+        margin-left: 10.43em;
+        color: #3498db;
+        font-size: .87em;
+        font-family: "varela round", sans-serif;
+        }
+
+        .user-profile > .description {
+        margin: auto;
+        margin-top: 1.35em;
+        margin-right: 6em;
+        width: 18em;
+        color: #7f8c8d;
+        font-size: .87em;
+        font-family: "varela round", sans-serif;
+        }
+
+        .user-profile > img#avatar {
+            padding: .7em;
+        margin-left: .3em;
+        margin-top: .3em;
+        height: 6.23em;
+        width: 6.23em;
+        border-radius: 18em;
+        }
+
+
+        .footer {
+            margin: 2em auto;
+            height: 3.70em;
+        background: #16a085;
+        text-align: center;
+        border-radius: 0 0 .3em .3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background 0.1s;
+        }
+
+        button {
+        color: white;
+        font-family: "Coda", sans-serif;
+        text-align: center;
+        font-size: 20px;
+        background: none;
+        outline: none;
+        border: 0;
+        }
+
+        .footer:hover {
+        background: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Random User Generator</h1>
+    <div class="user-profile">
+        <img id="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiSVGZcyZw-WddvPQefY3oTo39VABgGjhgXa0yY8-BNOR4erN3Jw" />
+        <div id="fullname">Jon Snow</div>
+        <div id="username">kingofnorth</div>
+        <div class="description">
+            <div>Email:
+                <span id="email">jon@hotmail.com</span>
+            </div>
+            <div>City:
+                <span id="city">Winterfell</span>
+            </div>
+        </div>
+        <div class="footer">
+            <button id="btn">Next User!</button>
+        </div>
+    </div>
+
+    <script>
+        const endpoint = 'https://randomuser.me/api/';
+        const btn = document.querySelector('#btn');
+        const avatar = document.querySelector('#avatar');
+        const name = document.querySelector('#fullname');
+        const username = document.querySelector('#username');
+        const email = document.querySelector('#email');
+        const city = document.querySelector('#city');
+
+        btn.addEventListener('click', function() {
+            fetch(endpoint)
+            .then(handleErrors)
+            .then(response => response.json())
+            .then(parseData)
+            .catch(error => console.log(error));
+        });
+
+        function parseData(data) {
+            const image = data.results[0].picture.medium;
+            const fullName = data.results[0].name.first + ' ' + data.results[0].name.last;
+            const userName = data.results[0].login.username;
+            const userEmail = data.results[0].email;
+            const userCity = capitalizeFirstLetter(data.results[0].location.city);
+            avatar.src = image;
+            name.textContent = fullName;
+            username.textContent = userName;
+            email.textContent = userEmail;
+            city.textContent = userCity;
+        }
+
+        function handleErrors(request) {
+            if (!request.ok) {
+                throw Error(request.status);
+            }
+            return request;
+        }
+
+        function capitalizeFirstLetter(word) {
+            const arr = word.split('');
+            return arr[0].toUpperCase() + arr.slice(1).join('');
+        }
+    </script>
+</body>
+</html>
