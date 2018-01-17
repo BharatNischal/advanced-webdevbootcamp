@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX Request With Fetch and Promises</title>
+</head>
+<body>
+    <button id="btn">Click Me</button>
+
+    <script>
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', () => {
+            const url = 'https://api.github.com/users/uptheirons78';
+            fetch(url)
+            .then(handleErrors)
+            .then((request) => {
+                console.log('FINE');
+                console.log(request);
+            })
+            .catch(error => console.log(error));
+        });
+
+        function handleErrors(request){
+            if (!request.ok) {
+                throw Error(request.status);
+            }
+            return request;
+        }
+
+    </script>
+
+</body>
+</html>
