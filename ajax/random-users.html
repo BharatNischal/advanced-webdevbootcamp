@@ -130,11 +130,12 @@
         });
 
         function parseData(data) {
-            const image = data.results[0].picture.medium;
-            const fullName = data.results[0].name.first + ' ' + data.results[0].name.last;
-            const userName = data.results[0].login.username;
-            const userEmail = data.results[0].email;
-            const userCity = capitalizeFirstLetter(data.results[0].location.city);
+            const fakeUser = data.results[0];
+            const image = fakeUser.picture.medium;
+            const fullName = fakeUser.name.first + ' ' + fakeUser.name.last;
+            const userName = fakeUser.login.username;
+            const userEmail = fakeUser.email;
+            const userCity = capitalizeFirstLetter(fakeUser.location.city);
             avatar.src = image;
             name.textContent = fullName;
             username.textContent = userName;
