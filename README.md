@@ -1,5 +1,9 @@
 # Advanced Web Developer BootCamp Log
 This repository contains everything I am learning from the Advanced Web Developer BootCamp by Colt Steele on Udemy
+### Wed, Jan 17 2018
+More Fetch and Random Users App Project
+### Tue, Jan 16 2018
+Ajax with XMLHttp and Fetch
 ### Mon, Jan 15 2018
 Promises
 ### Sun, Jan 14 2018
