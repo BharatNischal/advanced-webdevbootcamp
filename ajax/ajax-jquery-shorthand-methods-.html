@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax with JQuery - Shorthand Methods</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <button id="getBtn">GET()</button>
+    <button id="postBtn">POST()</button>
+    <button id="getJSONBtn">GETJSON()</button>
+
+    <script>
+        $('#getBtn').click(() => {
+            $.get("https://api.github.com/users/uptheirons78")
+                .done(data => console.log(data))
+                .fail(() => console.log('ERROR'));
+        });
+
+        $('#postBtn').click(() => {
+            const data = {name: 'Charlie', city: 'Florence'};
+            $.post("url", data)
+                .done(data => console.log('hello!'))
+                .fail(() => console.log('ERROR'));
+        });
+
+        $('#getJSONBtn').click(() => {
+            $.getJSON("https://api.github.com/users/colt")
+                .done(data => console.log(data))
+                .fail(() => console.log('ERROR'));
+        });
+    </script>
+</body>
+</html>
