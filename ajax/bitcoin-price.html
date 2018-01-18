@@ -6,46 +6,66 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BitCoin Price</title>
     <style>
+        body {
+            background-color: black;
+        }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 150px;
+            color: white;
         }
         .container h1 {
             font-size: 40px;
         }
 
-        @media (max-width: 600px) {
-            .container h1 {
-               font-size: 28px;
-            }
-        }
         .btn {
             margin: 20px;
-            color: white;
-            background-color: rgb(29, 187, 50);
             padding: 15px 40px;
-            text-transform: uppercase;
             text-decoration: none;
-            border: 1px solid rgb(29, 187, 50);
-            font-weight: bolder;
+            background: none;
+            color: rgb(29, 187, 50);
+            border: 2px solid rgb(29, 187, 50);
+            border-radius: 5px;
+            font: inherit;
             font-family: 'Montserrat';
-            transition-property: all;
-            transition-delay: 0.2s;
+            font-weight: bolder;
+            line-height: 1;
+            margin: 0.5em;
+            padding: 1em 2em;
+            text-transform: uppercase;
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
         }
         .btn:hover {
-            opacity: 0.8;
+            box-shadow: 0 0 40px 40px rgb(29, 187, 50) inset;
+            color: white;
         }
         #price, #lastYearPrice {
             color: rgb(29, 187, 50);
+        }
+
+        @media (max-width: 800px) {
+            .container h1 {
+               font-size: 28px;
+            }
+            .btn {
+                padding: 10px 30px;
+            }
+        }
+        @media (max-width: 500px) {
+            .container h1 {
+               font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Current Bitcoin Price: <span id="price"></span></h1>
-        <h1>One Year Ago Price: <span id="lastYearPrice"></span></h1>
+        <h1>Bitcoin Rate</h1>
+        <h1>Today: <span id="price"></span></h1>
+        <h1>1 year ago: <span id="lastYearPrice"></span></h1>
         <a id="button" class="btn" href="#">Refresh</a>
     </div>
 
@@ -65,7 +85,7 @@
                     const data = JSON.parse(XHR.responseText);
                     const rate = data.bpi.USD.rate;
                     const symbol = data.bpi.USD.code;
-                    price.textContent = `${rate} ${symbol}`;
+                    price.textContent = `$ ${rate}`;
                 }
             }
             XHR.open('GET', endpoint);
@@ -78,7 +98,7 @@
                 if (XHR.readyState == 4 && XHR.status == 200) {
                     const data = JSON.parse(XHR.responseText);
                     const lastYear = data.bpi[last_year];
-                    lastYearPrice.textContent = `${lastYear} USD`;
+                    lastYearPrice.textContent = `$ ${lastYear}`;
                 }
             }
             XHR.open('GET', endpoint2);
