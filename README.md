@@ -1,5 +1,9 @@
 # Advanced Web Developer BootCamp Log
 This repository contains everything I am learning from the Advanced Web Developer BootCamp by Colt Steele on Udemy
+### Fri, Jan 19 2018
+Advanced Array methods: forEach, map, filter, some and every
+### Thu, Jan 18 2018
+Some Jasmine basics for debugging...I'll be back on this section next (really don't like it)
 ### Wed, Jan 17 2018
 More Fetch and Random Users App Project
 ### Tue, Jan 16 2018
