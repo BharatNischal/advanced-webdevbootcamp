@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ADVANCED ARRAY METHODS - REDUCE</title>
+</head>
+<body>
+    <h1>OPEN THE CONSOLE!</h1>
+    <script>
+        //Whatever you return from the callback function is the new value of the accumulator
+        //The Accumulator is the first parameter of the callback function in reduce()
+        //Explanation:
+        //first parameter is a callback function: it has 4 parameters:
+        //accumulator, nextValue, index and array 
+        [1,2,3].reduce((accumulator, nextValue, index, array) => {
+            //here the callback function ...
+        }, initial); //initial: is a second optional parameter reduce accepts;
+
+        //EXAMPLE
+        const arr = [1,2,3,4,5];
+        // a = accumulator and n = nextValue
+        const sum = arr.reduce((a, n) => {
+        return a + n;
+        });
+
+        const sum2 = arr.reduce((a, n) => {
+        return a + n;
+        }, 100);
+
+        console.log(sum);
+        console.log(sum2);
+
+        //ANOTHER EXAMPLE WITH SENTENCES
+        const names = ['Leonardo', 'Michelangelo', 'Raffaello', 'Donatello'];
+
+        const sentence = names.reduce((a, n) => {
+        return a + ' ' + n;
+        }, 'The Italian Renaissance Genius were');
+
+        console.log(sentence);
+    
+    </script>
+</body>
