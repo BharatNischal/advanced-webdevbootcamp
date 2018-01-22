@@ -1,5 +1,7 @@
 # Advanced Web Developer BootCamp Log
 This repository contains everything I am learning from the Advanced Web Developer BootCamp by Colt Steele on Udemy
+### Mon, Jan 22 2018
+CSS GRID with Wes Bos course. Begin making some cool layouts with it!
 ### Sun, Jan 21 2018
 Started learning CSS GRID with Wes Bos course. Great resource to complete my CSS knoweldge.
 ### Sat, Jan 20 2018
