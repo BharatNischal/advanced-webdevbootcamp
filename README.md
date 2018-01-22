@@ -1,5 +1,9 @@
 # Advanced Web Developer BootCamp Log
 This repository contains everything I am learning from the Advanced Web Developer BootCamp by Colt Steele on Udemy
+### Sun, Jan 21 2018
+Started learning CSS GRID with Wes Bos course. Great resource to complete my CSS knoweldge.
+### Sat, Jan 20 2018
+Advanced Array methods: reduce() in depth and a lot of exercises done for all the methods
 ### Fri, Jan 19 2018
 Advanced Array methods: forEach, map, filter, some and every
 ### Thu, Jan 18 2018
