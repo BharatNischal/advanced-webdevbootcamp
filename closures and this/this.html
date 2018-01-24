@@ -12,6 +12,7 @@
         //Determined by the "execution context"
 
         /* this IN THE GLOBAL CONTEXT */
+
         "use strict"
 
         //when it is not declared in an object
@@ -23,15 +24,110 @@
         function whatIsThis() {
             return this; //window
         }
-        console.log(whatIsThis());
+        //console.log(whatIsThis());
 
         //without "strict mode" it is possible to declare a global variable from inside a function
         //strict mode avoid it and set this, declare inside a function, as undefined
         function variablesInThis(){
             this.person = 'Elie';
         }
-        console.log(variablesInThis()); //Uncaught TypeError: Cannot set property 'person' of undefined at variablesInThis
-        console.log(person); //'Elie' without "strict mode", with it is 'undefined'
+        //console.log(variablesInThis()); //Uncaught TypeError: Cannot set property 'person' of undefined at variablesInThis
+        //console.log(person); //'Elie' without "strict mode", with it is 'undefined'
+
+        /* 2 - this INSIDE A DECLARED OBJECT */
+        //STRICT MODE doesn't make difference here
+
+        var subject = {
+            firstName: 'Elie',
+            sayHi: function() {
+                return `Hi ${this.firstName}`;
+            },
+            determineContext: function() {
+                return this === subject;
+            }
+        }
+        //console.log(subject.sayHi()); // 'Hi Elie'
+        //console.log(subject.determineContext()); // true
+
+        //Note: Implicit Binding
+        var subject2 = {
+            firstName: 'Elie',
+            sayHi: function() {
+                return `Hi ${this.firstName}`;
+            },
+            determineContext: function() {
+                return this === subject2;
+            },
+            dog: {
+                sayHello: function() {
+                    return `Hello ${this.firstName}`;
+                },
+                determineContext: function() {
+                    return this === subject2;
+                }
+            }
+        }
+        //console.log(subject2.sayHi()); // 'Hi Elie'
+        //console.log(subject2.dog.sayHello()); // 'Hello undefined';
+        //console.log(subject2.dog.determineContext()); // false
+
+        /*-------------------------------------------------*/
+        /* 3 - EXPLICIT BINDING with call, apply and bind*/
+        /*-------------------------------------------------*/
+
+        /*******************************************************/
+        //call --- thisArg,a,b,c,d ... --- Invoke Immediately
+        /*******************************************************/
+            var subject3 = {
+                firstName: 'Elie',
+                sayHi: function () {
+                    return `Hi ${this.firstName}`;
+                },
+                determineContext: function () {
+                    return this === subject3;
+                },
+                dog: {
+                    sayHello: function () {
+                        return `Hello ${this.firstName}`;
+                    },
+                    determineContext: function () {
+                        return this === subject3;
+                    }
+                }
+            }
+        console.log(subject3.dog.sayHello.call(subject3)); // 'Hello Elie'
+        console.log(subject3.dog.determineContext.call(subject3)); // true
+
+        //Example
+        var colt = {
+            firstName: 'Colt',
+            sayHi: function() {
+                return `Hi ${this.firstName}`;
+            }
+        }
+        var giggi = {
+            firstName: 'Giggi'
+        }
+        console.log(colt.sayHi());
+        console.log(colt.sayHi.call(giggi));
+
+        //Example with a STAND ALONE FUNCTION
+        function sayHi() {
+            return `Hi ${this.firstName}`;
+        }
+        var gio = {
+            firstName: 'Gio'
+        }
+        var pio = {
+            firstName: 'Pio'
+        }
+        console.log(sayHi.call(gio)); //'Hi Gio'
+        console.log(sayHi.call(pio)); //'Hi Pio'
+
+        //apply --- thisArg,[a,b,c,d ...] --- Invoke Immediately
+        //bind --- thisArg,a,b,c,d ... --- No Invoke Immediately
+
+
 
     </script>
 </body>
