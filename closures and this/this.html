@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Keyword: THIS</title>
+</head>
+<body>
+    <h1>Open the console!</h1>
+    <script>
+        //Determined by the "execution context"
+
+        /* this IN THE GLOBAL CONTEXT */
+        "use strict"
+
+        //when it is not declared in an object
+        console.log(this); // window [in the browser....not in Node]
+
+        //same inside of a function...this refers to the Global Object until it is not
+        //declared inside of an object
+        //Pay Attention: if we use "strict mode" it is undefined
+        function whatIsThis() {
+            return this; //window
+        }
+        console.log(whatIsThis());
+
+        //without "strict mode" it is possible to declare a global variable from inside a function
+        //strict mode avoid it and set this, declare inside a function, as undefined
+        function variablesInThis(){
+            this.person = 'Elie';
+        }
+        console.log(variablesInThis()); //Uncaught TypeError: Cannot set property 'person' of undefined at variablesInThis
+        console.log(person); //'Elie' without "strict mode", with it is 'undefined'
+
+    </script>
+</body>
+</html>
