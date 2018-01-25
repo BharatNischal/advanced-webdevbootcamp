@@ -124,8 +124,87 @@
         console.log(sayHi.call(gio)); //'Hi Gio'
         console.log(sayHi.call(pio)); //'Hi Pio'
 
+        //*******************************************************//
         //apply --- thisArg,[a,b,c,d ...] --- Invoke Immediately
+        //*******************************************************//
+        //Almost identical to call - except the parameters!
+        function addNumbers(a,b,c,d) {
+            return this.firstName + ' just calculated ' + (a+b+c+d);
+        }
+        var gianni = {firstName: 'Gianni'};
+        var ugo = {firstName: 'Ugo'};
+
+        var gianniAddNumbers = addNumbers.call(gianni, 1,2,3,4); //Gianni just calculated 10
+        var gianniAddNumbers2 = addNumbers.apply(gianni, [1,2,3,4]); //Gianni just calculated 10
+        console.log(gianniAddNumbers);
+        console.log(gianniAddNumbers2);
+
+        var ugoAddNumbers = addNumbers.call(ugo, 1,2,3,4); //Ugo just calculated 10
+        var ugoAddNumbers2 = addNumbers.apply(ugo, [1,2,3,4]); //Ugo just calculated 10
+        console.log(ugoAddNumbers);
+        console.log(ugoAddNumbers2);
+
+        //great example
+        var nums = [5,7,1,4,2];
+        var max = Math.max(nums); //NaN ....Math.max doesn't accept an array of parameters
+        console.log(max);
+        var max2 = Math.max.apply(this, nums); //7
+        console.log(max2);
+
+        //another great example
+        function sumValues(a,b,c) {
+            return a+b+c;
+        }
+        var values = [4,2,1];
+        var sum = sumValues(values); //4,2,1undefinedundefined
+        var sum2 = sumValues.apply(this, values);//7
+        var sum3 = sumValues(...values);//7
+        console.log(sum);
+        console.log(sum2);
+        console.log(sum3);
+        /************************************************************/
         //bind --- thisArg,a,b,c,d ... --- No Invoke Immediately
+        /************************************************************/
+        //Parameters work like call, but bind returns a function with the context of 'this'
+        //bound already;
+        var gianniCalc = addNumbers.bind(gianni, 1,2);
+        console.log(gianniCalc(4,7)); //14
+        console.log(gianniCalc(5,9)); //17
+
+        //Note
+        var erasmus = {
+            firstName: 'Erasmus',
+            sayHi: function() {
+                setTimeout(function() {
+                    console.log('Hi ' + this.firstName);
+                }, 1000);
+            }
+        }
+        console.log(erasmus.sayHi()); //'Hi undefined'
+
+        //Note Again
+        var marcus_aurelius = {
+            firstName: 'Marcus Aurelius',
+            sayHi: function() {
+                setTimeout(function() {
+                    console.log('Hi ' + this.firstName);
+                }.bind(this), 1000);
+            }
+        }
+        console.log(marcus_aurelius.sayHi()); //'Hi undefined'
+
+        /*-------------------------------------------------*/
+            /*           4 - The NEW keyword          */
+        /*-------------------------------------------------*/
+        //the 'new' keyword set the context of this to the empty object...
+        function Person(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+        //without the keyword NEW "this" will be attached to the global object
+        //instead NEW let it refer to the Person object created before
+        const pippo = new Person('Pippo', 'Pippa');
+        console.log(pippo);
 
 
 
