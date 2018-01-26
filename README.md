@@ -1,5 +1,12 @@
 # Advanced Web Developer BootCamp Log
 This repository contains everything I am learning from the Advanced Web Developer BootCamp by Colt Steele on Udemy
+
+### Fri, Jan 26 2018
+Object Oriented Programming: constructor functions, prototyping and inheritance
+### Thu, Jan 25 2018
+Keyword "this" again with call, apply and bind methods.
+### Wed, Jan 24 2018
+Closures and the keyword "this"
 ### Tue, Jan 23 2018
 CSS GRID with Wes Bos course finished. Created different responsive layouts with grids. Great!
 ### Mon, Jan 22 2018
