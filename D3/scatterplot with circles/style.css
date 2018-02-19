@@ -1,0 +1,9 @@
+svg {
+  margin: 100px auto;
+  display: block;
+}
+
+.tick line {
+  stroke: #ccc;
+  stroke-dasharray: 5,5;
+}
